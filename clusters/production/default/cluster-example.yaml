@@ -1,15 +1,11 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: t1
+  name: cluster-example
   namespace: default
   labels:
     managed-by: cnpg-admin
 spec:
-  instances: 1
-  storage:
-    size: 1Gi
-  imageName: ghcr.io/cloudnative-pg/postgresql:16
   affinity:
     podAntiAffinityType: preferred
   bootstrap:
@@ -21,7 +17,7 @@ spec:
       owner: app
   enableSuperuserAccess: true
   failoverDelay: 0
-  imageName: ghcr.io/cloudnative-pg/postgresql:16
+  imageName: ghcr.io/cloudnative-pg/postgresql:15
   instances: 1
   logLevel: info
   maxSyncReplicas: 0

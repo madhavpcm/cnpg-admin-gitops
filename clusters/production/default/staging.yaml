@@ -1,15 +1,14 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: t1
+  name: staging
   namespace: default
   labels:
     managed-by: cnpg-admin
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"postgresql.cnpg.io/v1","kind":"Cluster","metadata":{"annotations":{},"name":"staging","namespace":"default"},"spec":{"instances":1,"storage":{"size":"1Gi"}}}
 spec:
-  instances: 1
-  storage:
-    size: 1Gi
-  imageName: ghcr.io/cloudnative-pg/postgresql:16
   affinity:
     podAntiAffinityType: preferred
   bootstrap:
@@ -21,7 +20,7 @@ spec:
       owner: app
   enableSuperuserAccess: true
   failoverDelay: 0
-  imageName: ghcr.io/cloudnative-pg/postgresql:16
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.1
   instances: 1
   logLevel: info
   maxSyncReplicas: 0

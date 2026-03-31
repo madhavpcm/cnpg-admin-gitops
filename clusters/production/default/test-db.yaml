@@ -1,15 +1,11 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: t1
+  name: test-db
   namespace: default
   labels:
     managed-by: cnpg-admin
 spec:
-  instances: 1
-  storage:
-    size: 1Gi
-  imageName: ghcr.io/cloudnative-pg/postgresql:16
   affinity:
     podAntiAffinityType: preferred
   bootstrap:
@@ -22,7 +18,7 @@ spec:
   enableSuperuserAccess: true
   failoverDelay: 0
   imageName: ghcr.io/cloudnative-pg/postgresql:16
-  instances: 1
+  instances: 3
   logLevel: info
   maxSyncReplicas: 0
   minSyncReplicas: 0
@@ -67,5 +63,5 @@ spec:
   stopDelay: 1800
   storage:
     resizeInUseVolumes: true
-    size: 1Gi
+    size: 10Gi
   switchoverDelay: 3600
