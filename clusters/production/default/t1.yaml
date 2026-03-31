@@ -6,6 +6,10 @@ metadata:
   labels:
     managed-by: cnpg-admin
 spec:
+  instances: 1
+  storage:
+    size: 1Gi
+  imageName: ghcr.io/cloudnative-pg/postgresql:16
   affinity:
     podAntiAffinityType: preferred
   bootstrap:
